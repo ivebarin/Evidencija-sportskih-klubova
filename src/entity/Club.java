@@ -1,5 +1,7 @@
 package entity;
 
+import java.math.BigDecimal;
+
 public class Club {
     private String name;
     private String city;
@@ -33,5 +35,28 @@ public class Club {
 
     public Player[] getPlayers() {
         return players;
+    }
+
+    public Player highestSalary(){
+        Player richest = null;
+
+        for(Player p : players){
+            if(richest == null || p.getSalary().compareTo(richest.getSalary()) > 0){
+                richest = p;
+            }
+        }
+
+        return richest;
+    }
+    public Player youngestPlayer(){
+        Player youngest = null;
+
+        for(Player p : players){
+            if(youngest == null || p.getAge() < youngest.getAge()){
+                youngest = p;
+            }
+        }
+
+        return youngest;
     }
 }

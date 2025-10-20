@@ -31,7 +31,7 @@ public class Main {
             System.out.print("Sport: ");
             String sport = sc.nextLine();
 
-            System.out.println("Unesite podatke o treneru");
+            System.out.println("\nUnesite podatke o treneru");
 
             System.out.print("Puno ime: ");
             String coachFullName = sc.nextLine();
@@ -45,7 +45,7 @@ public class Main {
 
             Coach coach = new Coach(coachFullName, experience, coachNationality);
 
-            System.out.print("Unesite broj igrača: ");
+            System.out.print("\nUnesite broj igrača koji želite upisati u sustav: ");
             int playersSize = sc.nextInt();
             sc.nextLine();
 
@@ -78,12 +78,11 @@ public class Main {
 
         int izbor;
         do {
-            System.out.println("IZBORNIK");
+            System.out.println("ODABERITE OPCIJU: ");
             System.out.println("1 - Pretraga klubova po gradu");
             System.out.println("2 - Pretraga klubova po sportu");
             System.out.println("3 - Pronađi najmlađeg igrača");
             System.out.println("4 - Pronađi igrača s najvećom plaćom");
-            System.out.println("5 - Ispiši sve klubove");
             System.out.println("0 - Izlaz");
             System.out.print("Odaberite opciju: ");
 
@@ -97,14 +96,12 @@ public class Main {
                 case 2 -> searchBySport(clubs, sc);
                 case 3 -> findYoungestPlayer(clubs);
                 case 4 -> findHighestSalary(clubs);
-                case 5 -> printClubs(clubs);
-                case 0 -> System.out.println("Izlaz iz programa...");
+                case 0 -> System.out.println("Izlaz iz programa");
                 default -> System.out.println("Nepostojeća opcija. Pokušajte ponovno.");
             }
 
             System.out.println();
         } while (izbor != 0);
-        printClubs(clubs);
         sc.close();
     }
 
@@ -112,10 +109,12 @@ public class Main {
         Player youngest = null;
 
         for (Club c : clubs) {
-            for (Player p : c.getPlayers()) {
-                if (youngest == null || p.getAge() < youngest.getAge()) {
-                    youngest = p;
-                }
+
+            Player clubYoungest = c.youngestPlayer();
+            if (clubYoungest == null) continue;
+
+            if (youngest == null || clubYoungest.getAge() < youngest.getAge()) {
+                youngest = clubYoungest;
             }
         }
 
@@ -129,10 +128,12 @@ public class Main {
         Player richest = null;
 
         for (Club c : clubs) {
-            for (Player p : c.getPlayers()) {
-                if (richest == null || p.getSalary().compareTo(richest.getSalary()) > 0) {
-                    richest = p;
-                }
+
+            Player clubRichest = c.highestSalary();
+            if (clubRichest == null) continue;
+
+            if (richest == null || clubRichest.getSalary().compareTo(richest.getSalary()) > 0) {
+                richest = clubRichest;
             }
         }
 
@@ -149,7 +150,7 @@ public class Main {
         boolean found = false;
 
         for (Club c : clubs) {
-            if (c.getCity().equalsIgnoreCase(city)) {
+            if (c.getCity().equals(city)) {
                 System.out.println(c.getName());
                 found = true;
             }
@@ -165,7 +166,7 @@ public class Main {
         boolean found = false;
 
         for (Club c : clubs) {
-            if (c.getSport().equalsIgnoreCase(sport)) {
+            if (c.getSport().equals(sport)) {
                 System.out.println(c.getName());
                 found = true;
             }
@@ -175,30 +176,5 @@ public class Main {
             System.out.println("Nema klubova koji se bave sportom " + sport + ".");
     }
 
-    public static void printClubs(Club[] clubs) {
-        System.out.println("Popis klubova\n");
 
-        for (int i = 0; i < clubs.length; i++) {
-            Club c = clubs[i];
-            System.out.println("Klub " + (i + 1));
-            System.out.println("Naziv: " + c.getName());
-            System.out.println("Grad: " + c.getCity());
-            System.out.println("Sport: " + c.getSport());
-
-            Coach coach = c.getCoach();
-            System.out.println("Trener:");
-            System.out.println("  Ime: " + coach.getFullName());
-            System.out.println("  Nacionalnost: " + coach.getNationality());
-            System.out.println("  Iskustvo: " + coach.getExperience() + " godina");
-
-            System.out.println("Igrači:");
-            for (int j = 0; j < c.getPlayers().length; j++) {
-                Player p = c.getPlayers()[j];
-                System.out.println("  " + (j + 1) + ". " + p.getFullName() +
-                        ", " + p.getNationality() +
-                        ", " + p.getAge() + " god, plaća " + p.getSalary() + " €");
-            }
-            System.out.println();
-        }
-    }
 }
