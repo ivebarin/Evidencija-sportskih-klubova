@@ -1,23 +1,26 @@
 package entity;
 
-public class Coach {
-    private String fullName;
-    private int experience;
-    private String nationality;
+public final class Coach extends ClubMember implements Role{
+    private final int experience;
 
-    public Coach(String fullName, int experience, String nationality) {
-        this.fullName = fullName;
+
+    public Coach(String fullName, int experience, int age) {
+        super(fullName, age);
         this.experience = experience;
-        this.nationality = nationality;
     }
 
-    public String getFullName(){
-        return fullName;
-    }
     public int getExperience(){
         return experience;
     }
-    public String getNationality(){
-        return nationality;
+    public void showProfile(){
+        System.out.println("PROFIL TRENERA\n");
+        System.out.println("Igrač: " + fullName);
+        System.out.println("Godine: " + age);
+        System.out.println("Iskustvo: " + experience);
     }
+    @Override
+    public String getRoleName(){
+        return "Trener";
+    }
+
 }

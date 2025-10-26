@@ -1,0 +1,105 @@
+KK Zadar
+Zadar
+Košarka
+Danijel Jusup
+42
+25
+2
+Toni Torbarina
+19
+1000
+Krilo
+40
+20
+5
+Lovro Mazalin
+26
+3500
+Centar
+38
+15
+7
+Hajduk Split
+Split
+Nogomet
+Mario Blažević
+45
+20
+2
+Marko Livaja
+30
+1200000
+Napadač
+25
+17
+6
+Stipe Biuk
+20
+150000
+Vezni
+32
+5
+10
+Dinamo Zagreb
+Zagreb
+Nogomet
+Zoran Mamić
+48
+22
+2
+Mislav Oršić
+28
+900000
+Krilni napadač
+30
+12
+5
+Bruno Petković
+27
+850000
+Napadač
+28
+15
+6
+RK Zagreb
+Zagreb
+Rukomet
+Ivica Obrvan
+48
+30
+2
+Filip Glavaš
+27
+2500
+Krilo
+55
+12
+20
+David Mandić
+26
+3000
+Lijevo krilo
+47
+9
+18
+NK Vukovar
+Vukovar
+Nogomet
+Ivan Tomić
+50
+28
+2
+Ivan Radoš
+23
+100000
+Golman
+0
+0
+0
+Luka Majstorović
+22
+95000
+Vezni
+32
+3
+5
